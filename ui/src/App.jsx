@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { submitIntent } from "./api/client";
 
 function App() {
   const [intent, setIntent] = useState("");
@@ -12,7 +13,7 @@ function App() {
     setTxHash(null);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/payments/intent", {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/payments/intent`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
